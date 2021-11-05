@@ -58,17 +58,6 @@ def get_seq(file: str) -> list[str]:
     return seqs
 
 
-def is_dna(seq: str) -> bool:
-    return re.match(r"[^ATGCN]", seq) is None
-
-
-def is_rna(seq: str) -> bool:
-    return re.match(r"[^AUGCN]", seq) is None
-
-def is_protein(seq: str) -> bool:
-    return re.match(r"[^ACDEFGHIKLMNPQRSTVWY]", seq) is None
-
-
 def read_fasta_file(file: str) -> list[list[str, str]]:
     fasta_data = []
     with open(file, "r") as f:
@@ -76,3 +65,15 @@ def read_fasta_file(file: str) -> list[list[str, str]]:
         for fasta in fasta_sequences:
             fasta_data.append([fasta.id, str(fasta.seq)])
     return fasta_data
+
+
+def is_dna(seq: str) -> bool:
+    return re.match(r"[^ATGCN]", seq) is None
+
+
+def is_rna(seq: str) -> bool:
+    return re.match(r"[^AUGCN]", seq) is None
+
+
+def is_protein(seq: str) -> bool:
+    return re.match(r"[^ACDEFGHIKLMNPQRSTVWY]", seq) is None

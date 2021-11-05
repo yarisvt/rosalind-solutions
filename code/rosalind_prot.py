@@ -7,7 +7,7 @@ DATA_FILE = os.path.join("../data", "rosalind_prot.txt")
 
 def get_protein(seq: str) -> str:
     if not is_rna(seq):
-        raise ValueError("sequence is not a DNA string")
+        raise ValueError("sequence is not an RNA string")
 
     # length of string should be a multiple of 3 to translate RNA to protein
     assert (len(seq) % 3) == 0

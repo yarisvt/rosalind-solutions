@@ -7,7 +7,7 @@ DATA_FILE = os.path.join("../data", "rosalind_prtm.txt")
 
 def get_monoisotopic_mass(seq: str) -> float:
     if not is_protein(seq):
-        raise ValueError("sequence is not a DNA string")
+        raise ValueError("sequence is not a protein string")
 
     mass = 0
     for aa in seq:

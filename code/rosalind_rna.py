@@ -7,7 +7,7 @@ DATA_FILE = os.path.join("../data", "rosalind_rna.txt")
 
 def get_rna_string(seq: str) -> str:
     if not is_dna(seq):
-        raise ValueError("sequence is not a RNA string")
+        raise ValueError("sequence is not a DNA string")
 
     return seq.replace("T", "U")
 
