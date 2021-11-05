@@ -1,4 +1,5 @@
 import re
+import requests
 
 from Bio import SeqIO
 
@@ -65,6 +66,11 @@ def read_fasta_file(file: str) -> list[list[str, str]]:
         for fasta in fasta_sequences:
             fasta_data.append([fasta.id, str(fasta.seq)])
     return fasta_data
+    
+
+def get_fasta_from_uniprot_id(uniprot_id: str) -> None:
+    r = requests.get(f"http://www.uniprot.org/uniprot/{uniprot_id}.fasta")
+    return r.text
 
 
 def is_dna(seq: str) -> bool:
