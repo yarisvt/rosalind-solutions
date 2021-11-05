@@ -14,7 +14,9 @@ def get_protein(seq: str) -> str:
 
     protein = ""
     for i in range(0, len(seq), 3):
-        protein += RNA_TO_ONE_PROTEIN[seq[i : i + 3]]
+        amino_acid = RNA_TO_ONE_PROTEIN[seq[i : i + 3]]
+        if amino_acid != "*":
+            protein += amino_acid
     return protein
 
 

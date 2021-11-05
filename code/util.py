@@ -1,9 +1,12 @@
 import re
 import requests
+from collections import Counter
 
 from Bio import SeqIO
 
 DNA_COMPLEMENT = {"A": "T", "T": "A", "G": "C", "C": "G"}
+
+RNA_COMPLEMENT = {"A": "U", "U": "A", "G": "C", "C": "G"}
 
 RNA_TO_ONE_PROTEIN = {
     "UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
@@ -16,16 +19,18 @@ RNA_TO_ONE_PROTEIN = {
     "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
     "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
 
-    "UAU": "Y", "UAC": "Y", "UAA": "", "UAG": "",
+    "UAU": "Y", "UAC": "Y", "UAA": "*", "UAG": "*",
     "CAU": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
     "AAU": "N", "AAC": "N", "AAA": "K", "AAG": "K",
     "GAU": "D", "GAC": "D", "GAA": "E", "GAG": "E",
 
-    "UGU": "C", "UGC": "C", "UGA": "", "UGG": "W",
+    "UGU": "C", "UGC": "C", "UGA": "*", "UGG": "W",
     "CGU": "R", "CGC": "R", "CGA": "R", "CGG": "R",
     "AGU": "S", "AGC": "S", "AGA": "R", "AGG": "R",
     "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G"
 }
+
+CODONS_PER_AMINO_ACID = dict(Counter(RNA_TO_ONE_PROTEIN.values()))
 
 MONOISOTOPIC_MASS_TABLE = {
     "A": 71.03711,

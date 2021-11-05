@@ -22,7 +22,9 @@ def get_rna_string(seq: str) -> str:
     protein = ""
     for i in range(0, len(seq), 3):
         codon = seq[i : i + 3].replace("T", "U")
-        protein += RNA_TO_ONE_PROTEIN[codon]
+        amino_acid = RNA_TO_ONE_PROTEIN[codon]
+        if amino_acid != "*":
+            protein += amino_acid
     return protein
 
 
