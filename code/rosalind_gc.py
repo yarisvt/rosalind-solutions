@@ -11,16 +11,16 @@ def get_gc(seq: str) -> float:
     return (seq.count("G") + seq.count("C")) / len(seq)
 
 
-def get_highest_gc(fasta_info: list[list[str, str]]) -> tuple[str, float]:
+def get_highest_gc(fasta_info: list[list[str]]) -> tuple[str, float]:
     highest_gc = 0
-    header_highest_gc = None
+    header_highest_gc = ""
     for header, seq in fasta_info:
         gc_percentage = get_gc(seq)
         if gc_percentage > highest_gc:
             highest_gc = gc_percentage
             header_highest_gc = header
 
-    return header_highest_gc, highest_gc
+    return (header_highest_gc, highest_gc)
 
 
 def main():

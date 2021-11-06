@@ -7,7 +7,7 @@ CHANCES = [1, 1, 1, 0.75, 0.5, 0]
 
 def get_data(file: str) -> list[int]:
     with open(file, "r") as f:
-        return map(int, f.read().strip().split())
+        return list(map(int, f.read().strip().split()))
 
 
 def get_expected_nr_offspring(couples: list[int]) -> int:
