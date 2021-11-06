@@ -1,4 +1,5 @@
 import re
+
 import requests
 from collections import Counter
 
@@ -52,12 +53,12 @@ MONOISOTOPIC_MASS_TABLE = {
     "T": 101.04768,
     "V": 99.06841,
     "W": 186.07931,
-    "Y": 163.06333
+    "Y": 163.06333,
 }
 
 
 def get_seq(file: str) -> list[str]:
-    seqs = []
+    seqs: list[str] = []
     with open(file, "r") as f:
         for line in f:
             seqs.append(line.strip())
@@ -65,13 +66,17 @@ def get_seq(file: str) -> list[str]:
 
 
 def read_fasta_file(file: str) -> list[list[str]]:
-    fasta_data = []
+    fasta_data: list[list[str]] = []
     with open(file, "r") as f:
-        fasta_sequences = SeqIO.parse(f, format="fasta")
-        for fasta in fasta_sequences:
-            fasta_data.append([fasta.id, str(fasta.seq)])
+        fasta_sequences = SeqIO.parse(
+            f, format="fasta"
+        )  # pyright: reportUnknownMemberType=false
+        for fasta in fasta_sequences:  # pyright: reportUnknownVariableType=false
+            fasta_data.append(
+                [fasta.id, str(fasta.seq)]
+            )  # pyright: reportUnknownArgumentType=false
     return fasta_data
-    
+
 
 def get_fasta_from_uniprot_id(uniprot_id: str) -> str:
     r = requests.get(f"http://www.uniprot.org/uniprot/{uniprot_id}.fasta")

@@ -5,8 +5,8 @@ DATA_FILE = os.path.join("../data", "rosalind_pper.txt")
 
 
 def get_data(file: str) -> list[int]:
-    with open(file, "r") as in_file:
-        return list(map(int, in_file.read().strip().split()))
+    with open(file, "r") as f:
+        return list(map(int, f.read().strip().split()))
 
 
 def get_total_number_partial_permutations(n: int, k: int) -> int:
