@@ -4,7 +4,7 @@ from util import read_fasta_file
 DATA_FILE = os.path.join("../data", "rosalind_grph.txt")
 
 
-def get_adjacency_list(fasta_info: list[list[str, str]], k=3) -> list[list[str, str]]:
+def get_adjacency_list(fasta_info: list[list[str]], k=3) -> list[list[str]]:
     headers = [header for header, _ in fasta_info]
     seqs = [seq for _, seq in fasta_info]
 

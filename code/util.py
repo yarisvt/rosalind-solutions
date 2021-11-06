@@ -64,7 +64,7 @@ def get_seq(file: str) -> list[str]:
     return seqs
 
 
-def read_fasta_file(file: str) -> list[list[str, str]]:
+def read_fasta_file(file: str) -> list[list[str]]:
     fasta_data = []
     with open(file, "r") as f:
         fasta_sequences = SeqIO.parse(f, format="fasta")
@@ -73,7 +73,7 @@ def read_fasta_file(file: str) -> list[list[str, str]]:
     return fasta_data
     
 
-def get_fasta_from_uniprot_id(uniprot_id: str) -> None:
+def get_fasta_from_uniprot_id(uniprot_id: str) -> str:
     r = requests.get(f"http://www.uniprot.org/uniprot/{uniprot_id}.fasta")
     return r.text
 

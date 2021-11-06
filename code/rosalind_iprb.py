@@ -8,7 +8,7 @@ DATA_FILE = os.path.join("../data", "rosalind_iprb.txt")
 
 def get_data(file: str) -> list[int]:
     with open(file, "r") as f:
-        return map(int, f.read().strip().split())
+        return list(map(int, f.read().strip().split()))
 
 
 def get_probability(hom: int, het: int, rec: int) -> float:
