@@ -55,7 +55,7 @@ def get_corrected_seqs(
 
 
 def write_to_file(seqs: list[tuple[str, str]]) -> None:
-    with open(os.path.join("../data", "rosalind_corr_solution_mand.txt"), "w") as f:
+    with open(os.path.join("../data", "rosalind_corr_solution.txt"), "w") as f:
         for seq in seqs:
             f.write(f"{'->'.join(seq)}\n")
 
